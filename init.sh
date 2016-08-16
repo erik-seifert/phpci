@@ -10,7 +10,6 @@
 # fi
 
 if [ ! -d "/var/www/.installed" ]; then
-	cd /var/www/
 
 	php /var/www/phpci/console phpci:install --queue-disabled \
 																					 --url=$PHPCI_URL \

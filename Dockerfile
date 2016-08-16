@@ -21,6 +21,8 @@ ENV PHPCI_ADMIN_LOGIN admin
 ENV PHPCI_ADMIN_PASSWORD xxx
 ENV PHPCI_ADMIN_MAIL admin@domain.tld
 
+WORKDIR /var/www
+
 RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION phpci --keep-vcs --no-dev && \
 		cd phpci && \
 		/usr/local/bin/composer install && \
