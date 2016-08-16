@@ -20,3 +20,6 @@ if [ ! -d "/var/www/phpci/public/" ]; then
 #	cp /var/www/phpci/public/.htaccess.dist /var/www/phpci/public/.htaccess
 	chown -R www-data: /var/www/
 fi
+
+
+supervisord -n
