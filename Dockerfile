@@ -1,5 +1,6 @@
 FROM bconnect/php
 
+# Enable apache rewrite
 RUN a2enmod rewrite
 
 ENV APACHE_RUN_USER www-data
