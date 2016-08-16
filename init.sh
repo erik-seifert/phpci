@@ -18,8 +18,9 @@ if [ ! -d "/var/www/.installed" ]; then
 																			--db-user=$PHPCI_DB_USER \
 																			--db-pass=$PHPCI_DB_PASSWORD \
 																			--admin-name=$PHPCI_ADMIN_LOGIN \
-																			--admin-pass=$PHPCI_ADMIN_PASSWORD
-																			--admin-mail=$PHPCI_ADMIN_MAIL
+																			--admin-pass=$PHPCI_ADMIN_PASSWORD \
+																			--admin-mail=$PHPCI_ADMIN_MAIL \
+																			-n
   status=$?
 	# if [ $status -eq 0 ]; then
 	# else
@@ -27,4 +28,5 @@ if [ ! -d "/var/www/.installed" ]; then
 	chown -R www-data: /var/www/html
 	echo $PHPCI_VERSION > /var/www/.installed
 fi
+
 /usr/sbin/apache2 -DFOREGROUND
