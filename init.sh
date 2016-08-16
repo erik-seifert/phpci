@@ -22,4 +22,4 @@ if [ ! -d "/var/www/phpci/public/" ]; then
 fi
 
 
-supervisord -n
+exec supervisord -n
