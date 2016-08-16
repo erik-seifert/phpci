@@ -27,5 +27,4 @@ if [ ! -d "/var/www/.installed" ]; then
 	chown -R www-data: /var/www/phpci
 	echo $PHPCI_VERSION > /var/www/.installed
 fi
-
-source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND
+/usr/sbin/apache2 -DFOREGROUND
