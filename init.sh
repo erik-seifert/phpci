@@ -20,8 +20,8 @@ if [ ! -f "/var/www/.installed" ]; then
 																			--admin-name=$PHPCI_ADMIN_LOGIN \
 																			--admin-pass=$PHPCI_ADMIN_PASSWORD \
 																			--admin-mail=$PHPCI_ADMIN_MAIL \
-																			-n
-  status=$?
+																			-n -q -vvv
+
 	# if [ $status -eq 0 ]; then
 	# else
 	# fi
