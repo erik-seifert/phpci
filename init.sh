@@ -9,8 +9,8 @@
 # 	fi
 # fi
 
-if [ ! -d "/var/www/.installed" ]; then
-
+if [ ! -f "/var/www/.installed" ]; then
+	rm -rf /var/www/html/PHPCI/config.yml
 	/var/www/html/console phpci:install --queue-disabled \
 																		  --url=$PHPCI_URL \
 															  		  --db-host=$PHPCI_DB_HOST \
