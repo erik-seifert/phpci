@@ -23,14 +23,13 @@ ENV PHPCI_ADMIN_MAIL admin@domain.tld
 
 WORKDIR /var/www
 
-RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION phpci --keep-vcs --no-dev && \
+RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION html --keep-vcs --no-dev && \
 		cd phpci && \
 		/usr/local/bin/composer install && \
 		/usr/local/bin/composer require sebastian/phpcpd 2.0.2
 
 COPY init.sh /root/init.sh
 RUN chmod +x /root/init.sh
-ADD phpci.conf /etc/apache2/sites-enabled
 
 EXPOSE 80
 CMD ["/root/init.sh"]

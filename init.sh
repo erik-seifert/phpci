@@ -11,7 +11,7 @@
 
 if [ ! -d "/var/www/.installed" ]; then
 
-	php /var/www/phpci/console phpci:install --queue-disabled \
+	php /var/www/html/console phpci:install --queue-disabled \
 																					 --url=$PHPCI_URL \
 																					 --db-host=$PHPCI_DB_HOST \
 																					 --db-name=$PHPCI_DB_NAME \
@@ -24,7 +24,7 @@ if [ ! -d "/var/www/.installed" ]; then
 	# if [ $status -eq 0 ]; then
 	# else
 	# fi
-	chown -R www-data: /var/www/phpci
+	chown -R www-data: /var/www/html
 	echo $PHPCI_VERSION > /var/www/.installed
 fi
 /usr/sbin/apache2 -DFOREGROUND
