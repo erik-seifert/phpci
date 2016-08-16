@@ -11,15 +11,15 @@
 
 if [ ! -d "/var/www/.installed" ]; then
 
-	php /var/www/html/console phpci:install --queue-disabled \
-																					 --url=$PHPCI_URL \
-																					 --db-host=$PHPCI_DB_HOST \
-																					 --db-name=$PHPCI_DB_NAME \
-																					 --db-user=$PHPCI_DB_USER \
-																					 --db-pass=$PHPCI_DB_PASSWORD \
-																					 --admin-name=$PHPCI_ADMIN_LOGIN \
-																					 --admin-pass=$PHPCI_ADMIN_PASSWORD \
-																					 --admin-mail=$PHPCI_ADMIN_MAIL
+	/var/www/html/console phpci:install --queue-disabled \
+																		  --url=$PHPCI_URL \
+															  		  --db-host=$PHPCI_DB_HOST \
+																			--db-name=$PHPCI_DB_NAME \
+																			--db-user=$PHPCI_DB_USER \
+																			--db-pass=$PHPCI_DB_PASSWORD \
+																			--admin-name=$PHPCI_ADMIN_LOGIN \
+																			--admin-pass=$PHPCI_ADMIN_PASSWORD
+																			--admin-mail=$PHPCI_ADMIN_MAIL
   status=$?
 	# if [ $status -eq 0 ]; then
 	# else
