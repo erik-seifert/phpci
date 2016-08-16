@@ -1,0 +1,26 @@
+phpci:
+  environment:
+    PHPCI_VERSION: 1.7.1
+    PHPCI_URL: http://localhost:8005
+    PHPCI_DB_HOST: mysql
+    PHPCI_DB_NAME: phpci
+    PHPCI_DB_USER: phpci
+    PHPCI_DB_PASSWORD: phpci
+    PHPCI_ADMIN_LOGIN: admin
+    PHPCI_ADMIN_PASSWORD: admin
+    PHPCI_ADMIN_MAIL: erik.seifert@b-connect.de
+  build: .
+  ports:
+  - 8005:80
+  links:
+  - phpci-mysql:mysql
+  stdin_open: true
+phpci-mysql:
+  environment:
+    MYSQL_DATABASE: phpci
+    MYSQL_USER: phpci
+    MYSQL_PASSWORD: phpci
+    MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+  tty: true
+  image: mysql:latest
+  stdin_open: true

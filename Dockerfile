@@ -1,5 +1,7 @@
 FROM bconnect/php
 
+RUN apt-get update && apt-get install sudo
+
 # Enable apache rewrite
 RUN a2enmod rewrite
 
@@ -21,17 +23,17 @@ ENV PHPCI_ADMIN_LOGIN admin
 ENV PHPCI_ADMIN_PASSWORD admin
 ENV PHPCI_ADMIN_MAIL admin@domain.tld
 
-WORKDIR /var/www
-
-RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION html --keep-vcs --no-dev && \
-		cd html && \
-		/usr/local/bin/composer install && \
-		/usr/local/bin/composer require sebastian/phpcpd 2.0.2
+RUN mkdir /var/www/.composer
+RUN chown www-data:www-data /var/www/.composer
+RUN cd /var/www
+RUN sudo -u www-data composer create-project block8/phpci=$PHPCI_VERSION /var/www/html --keep-vcs --no-dev
+RUN sudo -u www-data composer install
+RUN sudo -u www-data composer require sebastian/phpcpd 2.0.2
 
 COPY init.sh /root/init.sh
 RUN chmod +x /root/init.sh
 
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
-
+WORKDIR /var/www/html
 EXPOSE 80
 CMD ["/root/init.sh"]

@@ -11,16 +11,16 @@
 
 if [ ! -f "/var/www/.installed" ]; then
 	rm -rf /var/www/html/PHPCI/config.yml
-	/var/www/html/console phpci:install --queue-disabled \
-																		  --url=$PHPCI_URL \
-															  		  --db-host=$PHPCI_DB_HOST \
-																			--db-name=$PHPCI_DB_NAME \
-																			--db-user=$PHPCI_DB_USER \
-																			--db-pass=$PHPCI_DB_PASSWORD \
-																			--admin-name=$PHPCI_ADMIN_LOGIN \
-																			--admin-pass=$PHPCI_ADMIN_PASSWORD \
-																			--admin-mail=$PHPCI_ADMIN_MAIL \
-																			-n -q -vvv
+	./console phpci:install --queue-disabled \
+													--url=$PHPCI_URL \
+													--db-host=$PHPCI_DB_HOST \
+													--db-name=$PHPCI_DB_NAME \
+													--db-user=$PHPCI_DB_USER \
+													--db-pass=$PHPCI_DB_PASSWORD \
+													--admin-name=$PHPCI_ADMIN_LOGIN \
+													--admin-pass=$PHPCI_ADMIN_PASSWORD \
+													--admin-mail=$PHPCI_ADMIN_MAIL \
+													-q
 
 	# if [ $status -eq 0 ]; then
 	# else
@@ -29,4 +29,5 @@ if [ ! -f "/var/www/.installed" ]; then
 	echo $PHPCI_VERSION > /var/www/.installed
 fi
 
+nohup php daemonise phpci:daemonise &
 /usr/sbin/apache2 -DFOREGROUND
