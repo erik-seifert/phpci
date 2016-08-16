@@ -21,11 +21,10 @@ ENV PHPCI_ADMIN_LOGIN admin
 ENV PHPCI_ADMIN_PASSWORD xxx
 ENV PHPCI_ADMIN_MAIL admin@domain.tld
 
-RUN echo -e '[program:apache2]\ncommand=/bin/bash -c "source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND"\nautorestart=true\n\n' >> /etc/supervisor/supervisord.conf
-RUN echo -e '[program:mysql]\ncommand=/usr/bin/pidproxy /var/run/mysqld/mysqld.pid /usr/sbin/mysqld\nautorestart=true\n\n' >> /etc/supervisor/supervisord.conf
-
 COPY init.sh /root/init.sh
 RUN chmod +x /root/init.sh
+ADD supervisord.conf /etc/supervisor/conf.d
+ADD phpci.conf /etc/apache2/sites-enabled
 
 EXPOSE 80
 CMD ["/root/init.sh"]
