@@ -24,7 +24,7 @@ ENV PHPCI_ADMIN_MAIL admin@domain.tld
 WORKDIR /var/www
 
 RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION html --keep-vcs --no-dev && \
-		cd phpci && \
+		cd html && \
 		/usr/local/bin/composer install && \
 		/usr/local/bin/composer require sebastian/phpcpd 2.0.2
 
