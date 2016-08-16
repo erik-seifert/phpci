@@ -31,5 +31,7 @@ RUN /usr/local/bin/composer create-project block8/phpci=$PHPCI_VERSION html --ke
 COPY init.sh /root/init.sh
 RUN chmod +x /root/init.sh
 
+ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+
 EXPOSE 80
 CMD ["/root/init.sh"]
