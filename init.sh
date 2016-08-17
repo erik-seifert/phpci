@@ -20,8 +20,9 @@ if [ ! -f "/var/www/.installed" ]; then
 													--admin-name=$PHPCI_ADMIN_LOGIN \
 													--admin-pass=$PHPCI_ADMIN_PASSWORD \
 													--admin-mail=$PHPCI_ADMIN_MAIL \
-													-q
+													-n
 
+  echo "CREATED USER ${PHPCI_ADMIN_MAIL} with pass ${PHPCI_ADMIN_PASSWORD}"
 	# if [ $status -eq 0 ]; then
 	# else
 	# fi
